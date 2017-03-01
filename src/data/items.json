@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Canapé Fjord",
+    "price": 10,
+    "categoryId": 1,
+    "subCategoryId": 2,
+    "color": "red",
+    "rating": 5,
+    "brand": "GroundStat",
+    "special": "discount"
+  },
+  {
+    "id": 2,
+    "name": "Chaise Gorgoroth",
+    "price": 20,
+    "categoryId": 2,
+    "subCategoryId": 3,
+    "color": "orange",
+    "rating": 3.5,
+    "brand": "MobHill",
+    "special": "new"
+  },
+  {
+    "id": 3,
+    "name": "Four Hel",
+    "price": 400,
+    "categoryId": 2,
+    "subCategoryId": 1,
+    "color": "dark-blue",
+    "rating": 4,
+    "brand": "GroundStat"
+  },
+  {
+    "id": 4,
+    "name": "Canapé Blackbeard",
+    "price": 30,
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "color": "black",
+    "rating": 3,
+    "brand": "MobHill"
+  }
+]

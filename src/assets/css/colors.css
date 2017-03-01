@@ -1,0 +1,83 @@
+/*
+============================
+COLOR SQUARES
+============================
+*/
+
+.panel.panel-shop-by .list-group-item ul li.color-square {
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: left;
+    margin-top: 0;
+    position: relative;
+    -webkit-transition: box-shadow 0.2s, outline 0.2s;
+    -moz-transition: box-shadow 0.2s, outline 0.2s;
+    -ms-transition: box-shadow 0.2s, outline 0.2s;
+    -o-transition: box-shadow 0.2s, outline 0.2s;
+    transition: box-shadow 0.2s, outline 0.2s;
+}
+
+.panel.panel-shop-by .list-group-item ul li.color-square a {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.panel.panel-shop-by .list-group-item ul li.color-square:hover,
+.panel.panel-shop-by .list-group-item ul li.color-square.active {
+    outline: 2px solid #fff;
+    box-shadow: 0 0 7px #000;
+    z-index: 999;
+}
+
+.bg-red {
+    background-color: rgb(183,0,2);
+}
+.bg-orange {
+    background-color: rgb(232,158,37);
+}
+.bg-yellow {
+    background-color: rgb(254,252,59);
+}
+.bg-dark-green {
+    background-color: rgb(131,180,43);
+}
+.bg-green {
+    background-color: rgb(121,213,74);
+}
+.bg-light-blue {
+    background-color: rgb(139,245,255);
+}
+.bg-blue {
+    background-color: rgb(79,139,149);
+}
+.bg-dark-blue {
+    background-color: rgb(7,21,174);
+}
+.bg-dark-purple {
+    background-color: rgb(83,0,222);
+}
+.bg-purple {
+    background-color: rgb(137,0,222);
+}
+.bg-black {
+    background-color: rgb(0,0,0);
+}
+.bg-white {
+    background-color: rgb(255,255,255);
+}
+.bg-transparent {
+    background: #000000; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #000000 0%, #000000 50%, #ffffff 50%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #000000 0%,#000000 50%,#ffffff 50%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #000000 0%,#000000 50%,#ffffff 50%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.bg-pink {
+    background-color: rgb(181,3,245);
+}
+.bg-dark-pink {
+    background-color: rgb(160,1,130);
+}
