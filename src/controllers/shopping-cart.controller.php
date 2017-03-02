@@ -88,7 +88,12 @@ class ShoppingCartController extends BaseController
                 $cart = ShoppingCart::get_instance()->get_cart();
                 $this->update_quantity($cart, $id);
             }
-            echo json_encode(['shoppingItemsCount' => ShoppingCart::get_instance()->count_items_in_cart()]);
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'shoppingItemsCount' => ShoppingCart::get_instance()->count_items_in_cart(),
+                'addedItem' => Db::get_instance()->get_item_by_id($id)
+            ]);
 
         } else {
             throw new Error('Invalid id');

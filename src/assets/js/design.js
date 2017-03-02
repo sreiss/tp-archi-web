@@ -20,8 +20,15 @@
 
                 cartController.addToCart(data)
                     .done(function(data, textStatus) {
-                        var result = JSON.parse(data);
-                        $('#cart-items-count').html('(' + result.shoppingItemsCount + ')');
+                        $('#cart-items-count').html('(' + data.shoppingItemsCount + ')');
+
+                        $('#added-to-cart-alert').remove();
+
+                        $('#main-container').prepend(
+                            $('<div class="alert alert-success" id="added-to-cart-alert">')
+                                .append('<i class="glyphicon glyphicon-ok"> ')
+                                .append('<strong> ' + data.addedItem.name + ' successfully added to your cart.</strong>')
+                        )
                     })
                     .fail(function(jqXHR, textStatus, errorThrown) {
 

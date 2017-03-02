@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="main-container">
     <div class="design-main">
         <div class="col-md-3 filter-panel">
             <div class="panel panel-shop-by">

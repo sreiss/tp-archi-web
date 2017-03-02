@@ -87,11 +87,9 @@ if (isset($_SERVER['PATH_INFO'])) {
 
         array_unshift($params, $query);
     }
-}
-
-if (empty($route_name) || empty($method_name)) {
-    $route_name = '';
-    $method_name = '';
+} else {
+    $route_name = 'design';
+    $method_name = 'index';
 }
 
 $error_code = 404;
