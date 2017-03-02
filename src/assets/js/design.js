@@ -1,6 +1,31 @@
 (function($, cartController, designController) {
 
-    var currentSearch = '';
+    var filter = {
+        'category': null,
+        'sub-category': null,
+        'search-text': null,
+        'color': null,
+        'brands': null,
+        'min-price': -1,
+        'max-price': -1
+    };
+
+    function searchToFilter(search) {
+        var queryStr = search.substring(1);
+        var queryItemStrs = queryStr.split('&');
+        var queryItems = {};
+
+        queryItemStrs.forEach(function (qi) {
+            var parts = qi.split('=');
+            if (parts.length == 2) {
+                queryItems[parts[0]] = parts[1];
+            }
+        });
+
+        for (var key in queryItems) {
+            filter[key] = queryItems[key];
+        }
+    }
 
     function redrawRatings() {
         $('.rating').each(function (index, element) {
@@ -89,14 +114,29 @@
     }
 
     function refreshProducts() {
-        var finalSearch = currentSearch;
+        var loader = $('#items-loader');
+        var finalSearch = '?';
+        var parts = [];
+        for (var key in filter) {
+            if (filter[key] !== null && filter[key] != -1) parts.push(key + '=' + filter[key]);
+        }
 
+        finalSearch += parts.join('&');
+
+        loader.addClass('visible');
         designController.getItems(finalSearch)
             .done(function(data) {
+                var numberOfItems = $('#number-of-items');
+                numberOfItems.empty();
+                numberOfItems.append(data.length);
+
                 displayProducts(data);
             })
             .fail(function() {
 
+            })
+            .always(function() {
+                loader.removeClass('visible');
             });
     }
 
@@ -104,12 +144,18 @@
         $(element).on('click', function (e) {
             e.preventDefault();
 
-            currentSearch = element.search;
+            var previousColor = filter.color;
+            searchToFilter(element.search);
 
-            $('.color-square').each(function(index, element) {
+            $('.color-square').each(function (index, element) {
                 $(element).removeClass('active');
             });
-            $(e.target).parent().addClass('active');
+
+            if (filter.color == previousColor) {
+                filter.color = null;
+            } else {
+                $(e.target).parent().addClass('active');
+            }
 
             refreshProducts();
         });
@@ -120,6 +166,11 @@
     priceSlider.on('slide', function(e) {
         $('#price-slider-lower-bound').html('$' + e.value[0]);
         $('#price-slider-upper-bound').html('$' + e.value[1]);
+
+        filter['min-price'] = e.value[0];
+        filter['max-price'] = e.value[1];
+
+        refreshProducts();
     });
 
     $('.categories > li > a').each(function(index, element) {
@@ -127,8 +178,9 @@
             e.preventDefault();
             var el = $(element);
 
-            currentSearch = element.search;
-            refreshProducts();
+            filter['sub-category'] = null;
+            var previousCategory = filter.category;
+            searchToFilter(element.search);
 
             $('.categories > li').each(function(index, element) {
                 $(element).removeClass('active');
@@ -136,7 +188,14 @@
             $('.sub-categories > li').each(function(index, element) {
                 $(element).removeClass('active');
             });
-            el.parent().addClass('active');
+
+            if (previousCategory == filter.category) {
+                filter.category = null;
+            } else {
+                el.parent().addClass('active');
+            }
+
+            refreshProducts();
         });
     });
 
@@ -145,13 +204,36 @@
             e.preventDefault();
             var el = $(element);
 
-            currentSearch = element.search;
+            searchToFilter(element.search);
             refreshProducts();
 
             $('.sub-categories > li').each(function(index, element) {
                 $(element).removeClass('active');
             });
             el.parent().addClass('active');
+        });
+    });
+
+    $('.brands > li > label > :checkbox').each(function(index, element) {
+        $(element).on('change', function(e) {
+            var self = $(this);
+            var brand = self.data('brand');
+
+            e.preventDefault();
+
+            filter.brands = filter.brands || [];
+
+            var index;
+            if (self.is(':checked') && filter.brands.indexOf(brand) == -1) {
+                filter.brands.push(brand);
+            } else if (!self.is(':checked') && (index = filter.brands.indexOf(brand)) != -1) {
+                filter.brands.splice(index, 1);
+            }
+
+            if (filter.brands.length == 0) {
+                filter.brands = null;
+            }
+            refreshProducts();
         });
     });
 

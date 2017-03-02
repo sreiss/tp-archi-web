@@ -60,7 +60,7 @@ class Db {
         return $this->brands;
     }
 
-    public function get_items($join = true, $category_id = null, $sub_category_id = null, $search_text = null, $color = null) {
+    public function get_items($join = true, $category_id = null, $sub_category_id = null, $search_text = null, $color = null, $brands = [], $min_price = -1, $max_price = -1) {
         $items = [];
         foreach ($this->items as $item) {
             if (!empty($category_id) && $category_id != $item->get_category_id()) {
@@ -76,6 +76,18 @@ class Db {
             }
 
             if (!empty($search_text) && strpos(strtolower($item->get_name()), strtolower($search_text)) === false) {
+                continue;
+            }
+
+            if (!empty($brands) && !in_array($item->get_brand(), $brands)) {
+                continue;
+            }
+
+            if ($min_price != -1 && $item->get_price() < $min_price) {
+                continue;
+            }
+
+            if ($max_price != -1 && $item->get_price() > $max_price) {
                 continue;
             }
 

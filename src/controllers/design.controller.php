@@ -51,6 +51,9 @@ class DesignController extends BaseController {
         $sub_category_id = null;
         $search_text = null;
         $color = null;
+        $brands = [];
+        $min_price = -1;
+        $max_price = -1;
         if (isset($filter)) {
             if (isset($filter['category'])) {
                 $category_id = $filter['category'];
@@ -64,8 +67,17 @@ class DesignController extends BaseController {
             if (isset($filter['color'])) {
                 $color = $filter['color'];
             }
+            if (isset($filter['brands'])) {
+                $brands = explode(',', $filter['brands']);
+            }
+            if (isset($filter['min-price'])) {
+                $min_price = (int) $filter['min-price'];
+            }
+            if (isset($filter['max-price'])) {
+                $max_price = (int) $filter['max-price'];
+            }
         }
-        $items = Db::get_instance()->get_items(true, $category_id, $sub_category_id, $search_text, $color);
+        $items = Db::get_instance()->get_items(true, $category_id, $sub_category_id, $search_text, $color, $brands, $min_price, $max_price);
 
         header('Content-Type: application/json');
         echo json_encode($items);

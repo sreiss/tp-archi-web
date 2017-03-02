@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Canapé Fjord",
-    "price": 10,
+    "price": 600,
     "categoryId": 1,
     "subCategoryId": 2,
     "color": "red",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "name": "Chaise Gorgoroth",
-    "price": 20,
+    "price": 150,
     "categoryId": 2,
     "subCategoryId": 3,
     "color": "orange",
@@ -34,7 +34,7 @@
   {
     "id": 4,
     "name": "Canapé Blackbeard",
-    "price": 30,
+    "price": 400,
     "categoryId": 1,
     "subCategoryId": 1,
     "color": "black",

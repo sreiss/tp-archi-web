@@ -69,11 +69,11 @@
                     </li>
                     <li class="list-group-item">
                         <div class="list-group-item-heading">BRAND</div>
-                        <ul>
+                        <ul class="brands">
                             <?php foreach ($vars['brands'] as $brand): ?>
                                 <li>
                                     <label>
-                                        <input type="checkbox"> <?php echo $brand->get_name(); ?> (<?php echo $brand->get_count(); ?>)
+                                        <input type="checkbox" data-brand="<?php echo $brand->get_name(); ?>"> <?php echo $brand->get_name(); ?> (<?php echo $brand->get_count(); ?>)
                                     </label>
                                 </li>
                             <?php endforeach; ?>
@@ -86,7 +86,8 @@
             <img src="/assets/images/img-03.png" alt="Banner" />
             <nav class="navbar items-nav">
                 <div class="nav navbar-nav">
-                    <p class="navbar-text"><?php echo count($vars['items']); ?> item(s)</p>
+                    <p class="navbar-text"><span id="number-of-items"><?php echo count($vars['items']); ?></span> item(s)</p>
+                    <div class="navbar-loader"><span class="loader" id="items-loader"></span></div>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><img src="/assets/images/img-04.png"/></a></li>

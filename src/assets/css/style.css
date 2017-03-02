@@ -49,6 +49,10 @@ SEARCH
 NAVBAR
 ============================
 */
+.items-nav .navbar-loader {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
     margin-left: 15px;
@@ -89,6 +93,12 @@ NAVBAR
 }
 
 @media (min-width: 768px) {
+    .items-nav .navbar-loader {
+        float: left;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
         margin-left: 0;
