@@ -36,6 +36,15 @@ NAVBAR
 ============================
 */
 
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: rgb(80,80,80);
+}
+
 .navbar-soft-market {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -58,11 +67,26 @@ NAVBAR
 }
 
 .navbar-soft-market .navbar-brand {
-    padding: 8px;
+    padding: 4px 0;
 }
 
 .navbar-soft-market .navbar-brand > img {
     max-height: 100%;
+}
+
+@media (min-width: 768px) {
+    .navbar > .container .navbar-brand,
+    .navbar > .container-fluid .navbar-brand {
+        margin-left: 0;
+    }
+
+    .navbar-right {
+        margin-right: 0;
+    }
+
+    .navbar-form.navbar-right {
+        padding: 10px 0 10px 15px;
+    }
 }
 
 .navbar.sub-navbar-soft-market {
@@ -86,11 +110,13 @@ NAVBAR
     background-color: transparent;
 }
 
-.sub-navbar-soft-market .navbar-nav.navbar-right > li+li:before {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: rgb(234,237,238);
-    content: "|";
+@media(min-width: 768px) {
+    .sub-navbar-soft-market .navbar-nav.navbar-right > li + li:before {
+        padding-right: 10px;
+        padding-left: 10px;
+        color: rgb(234, 237, 238);
+        content: "|";
+    }
 }
 
 /*
@@ -145,6 +171,46 @@ HEADER
 FOOTER
 ============================
 */
+
+ul.currencies {
+    margin-left: 30px;
+    padding: 0;
+}
+
+ul.langs {
+    padding: 0;
+}
+
+ul.langs > li,
+ul.currencies > li {
+    display: inline-block;
+
+}
+
+ul.langs > li a {
+    padding: 0 2px;
+}
+
+ul.currencies > li a {
+    padding: 0 5px;
+}
+
+ul.langs > li a,
+ul.currencies > li a {
+    color: rgb(198,198,198);
+}
+
+ul.langs > li.active a,
+ul.currencies > li.active a {
+    font-weight: bold;
+    color: #000;
+}
+
+.currency-footer {
+    color: rgb(80,80,80);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
 
 .container.no-padding {
     padding-left: 0;
@@ -409,6 +475,16 @@ DESIGN
 ============================
 */
 
+@media(min-width: 768px) {
+    .design-main > .filter-panel {
+        padding-left: 30px;
+    }
+
+    .design-main > .products-main {
+        padding-right: 0;
+    }
+}
+
 .product > .image-container {
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -627,4 +703,40 @@ SLIDER
 
 .slider.slider-horizontal {
     width: 100% !important;
+}
+
+/*
+============================
+PAGINATION
+============================
+ */
+
+.pagination {
+    border: none;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span,
+.pagination>li:last-child>a,
+.pagination>li:last-child>span,
+.pagination > li > a,
+.pagination > li > span {
+    border-radius: 13px;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    margin-left: 0;
+}
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    padding: 5px 15px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    margin-left: 10px;
+    padding: 5px 8px;
+    font-size: 11px;
 }

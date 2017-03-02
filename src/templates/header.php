@@ -15,7 +15,7 @@
         </div>
     </nav>
     <nav class="navbar navbar-soft-market">
-        <div class="container">
+        <div class="container no-padding">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

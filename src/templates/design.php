@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="col-md-12">
-        <div class="col-md-3">
+    <div class="design-main">
+        <div class="col-md-3 filter-panel">
             <div class="panel panel-shop-by">
                 <div class="panel-heading">
                     Shop by
@@ -82,7 +82,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 products-main">
             <img src="/assets/images/img-03.png" alt="Banner" />
             <nav class="navbar items-nav">
                 <div class="nav navbar-nav">
@@ -131,6 +131,14 @@
                 <?php endforeach; ?>
             </div>
             <div class="clearfix"></div>
+            <div class="text-center">
+                <ul class="pagination">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next page</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

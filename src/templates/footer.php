@@ -43,9 +43,24 @@
             <div class="clearfix"></div>
         </div>
     </div>
-    <div class="address-footer">
+    <div class="currency-footer">
         <div class="container">
-
+            <div class="col-md-6">
+                SoftMarket Magento store by emthemes.com
+            </div>
+            <div class="col-md-6">
+                <ul class="pull-right currencies">
+                    <li class="active"><a href="#">$</a></li>
+                    <li><a href="#">€</a></li>
+                    <li><a href="#">£</a></li>
+                </ul>
+                <ul class="pull-right langs">
+                    <li class="active"><a href="#">EN</a></li>
+                    <li><a href="#">FR</a></li>
+                    <li><a href="#">ES</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 </footer>
