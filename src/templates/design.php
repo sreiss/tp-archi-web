@@ -90,10 +90,10 @@
                     <div class="navbar-loader"><span class="loader" id="items-loader"></span></div>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><img src="/assets/images/img-04.png"/></a></li>
-                    <li><a href="#"><img src="/assets/images/img-05.png"/></a></li>
-                    <li><a href="#"><img src="/assets/images/img-06.png"/></a></li>
-                    <li><a href="#"><img src="/assets/images/img-07.png"/></a></li>
+                    <li><a href="#"><img src="/assets/images/img-04.png" alt="List or cards"/></a></li>
+                    <li><a href="#"><img src="/assets/images/img-05.png" alt="Items per page"/></a></li>
+                    <li><a href="#"><img src="/assets/images/img-06.png" alt="Position"/></a></li>
+                    <li><a href="#" id="to-top"><img src="/assets/images/img-07.png" alt="To top"/></a></li>
                 </ul>
                 <div class="clearfix"></div>
             </nav>
@@ -112,7 +112,13 @@
                             <div class="caption">
                                 <h5><?php echo $item->get_name(); ?></h5>
 
-                                <p>$<?php echo $item->get_price(); ?></p>
+                                <p>
+                                    <?php $price_class = ($item->has_discount()) ? ' with-discount': ''; ?>
+                                    <span class="price<?php echo $price_class; ?>">$<?php echo $item->get_original_price(); ?></span>
+                                    <?php if ($item->has_discount()): ?>
+                                        <span class="discount-price">$<?php echo $item->get_price(); ?></span>
+                                    <?php endif; ?>
+                                </p>
                                 <p><input type="hidden" class="rating" data-readonly value="<?php echo $item->get_rating(); ?>"/></p>
                             </div>
                             <ul class="thumbnail-links">
@@ -129,6 +135,9 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                    <?php if ($i > 0 && (($i % 2) == 0)): ?>
+                        <div class="clearfix"></div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
             <div class="clearfix"></div>

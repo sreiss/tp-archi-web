@@ -68,7 +68,9 @@
 
         products.empty();
 
-        data.forEach(function(item) {
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+
             var specialLabel = $('<div class="product-label">');
             if (item.special == 'new') {
                 specialLabel.addClass('new');
@@ -76,6 +78,15 @@
                 specialLabel.addClass('discount');
             }
 
+            var priceP = $('<p>');
+            if (item.discount_percentage != 0) {
+                priceP.append(
+                    $('<span class="price with-discount">').append('$' + item.price),
+                    $('<span class="discount-price">').append(' $' + (item.price - ((item.discount_percentage * item.price) / 100)))
+                );
+            } else {
+                priceP.append('$' + item.price);
+            }
 
             var itemDiv = $('<div class="col-md-4">').append(
                 $('<div class="thumbnail product">').append(
@@ -85,7 +96,7 @@
                     ),
                     $('<div class="caption">').append(
                         $('<h5>').append(item.name),
-                        $('<p>').append('$' + item.price),
+                        priceP,
                         $('<p>').append(
                             $('<input type="hidden" class="rating" data-readonly value="' + item.rating + '"/>')
                         )
@@ -107,7 +118,11 @@
 
 
             products.append(itemDiv);
-        });
+
+            if (i > 0 && ((i % 2) == 0)) {
+                products.append($('<div class="clearfix">'));
+            }
+        }
 
         redrawRatings();
         addCartButtonActions();
@@ -235,6 +250,11 @@
             }
             refreshProducts();
         });
+    });
+
+    $('#to-top').on('click', function (e) {
+        $('html, body').animate({scrollTop: 0}, 500);
+        return false;
     });
 
 })(jQuery, cartController, designController);

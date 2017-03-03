@@ -3,8 +3,9 @@
     "id": 1,
     "name": "Canapé Fjord",
     "price": 600,
+    "discountPercentage": 20,
     "categoryId": 1,
-    "subCategoryId": 2,
+    "subCategoryId": 1,
     "color": "red",
     "rating": 5,
     "brand": "GroundStat",
@@ -39,6 +40,16 @@
     "subCategoryId": 1,
     "color": "black",
     "rating": 3,
+    "brand": "MobHill"
+  },
+  {
+    "id": 5,
+    "name": "Armoire Kstadt",
+    "price": 1231,
+    "categoryId": 3,
+    "subCategoryId": 2,
+    "color": "green",
+    "rating": 2.5,
     "brand": "MobHill"
   }
 ]

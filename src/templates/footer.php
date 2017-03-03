@@ -2,16 +2,16 @@
     <div class="tiles-footer">
         <div class="container no-padding">
             <div class="col-md-3 img-container">
-                <img src="/assets/images/img-14.png" alt="Trial & Free Softwares">
+                <a href="#"><img src="/assets/images/img-14.png" alt="Trial & Free Softwares"></a>
             </div>
             <div class="col-md-3 img-container">
-                <img src="/assets/images/img-15.png" alt="Banner">
+                <a href="#"><img src="/assets/images/img-15.png" alt="Banner"></a>
             </div>
             <div class="col-md-3 img-container">
-                <img src="/assets/images/img-16.png" alt="Gifts & Events">
+                <a href="#"><img src="/assets/images/img-16.png" alt="Gifts & Events"></a>
             </div>
             <div class="col-md-3 img-container">
-                <img src="/assets/images/img-17.png" alt="Submit your apps">
+                <a href="#"><img src="/assets/images/img-17.png" alt="Submit your apps"></a>
             </div>
         </div>
     </div>
@@ -46,15 +46,15 @@
     <div class="currency-footer">
         <div class="container">
             <div class="col-md-6">
-                SoftMarket Magento store by emthemes.com
+                <p>SoftMarket Magento store by emthemes.com</p>
             </div>
             <div class="col-md-6">
-                <ul class="pull-right currencies">
+                <ul class="currencies">
                     <li class="active"><a href="#">$</a></li>
                     <li><a href="#">€</a></li>
                     <li><a href="#">£</a></li>
                 </ul>
-                <ul class="pull-right langs">
+                <ul class="langs">
                     <li class="active"><a href="#">EN</a></li>
                     <li><a href="#">FR</a></li>
                     <li><a href="#">ES</a></li>

@@ -25,7 +25,6 @@
         <script src="/assets/js/design-controller.js" type="text/javascript"></script>
         <script src="/assets/js/search-controller.js" type="text/javascript"></script>
         <script src="/assets/js/common.js" type="text/javascript"></script>
-        <script src="/assets/js/design.js" type="text/javascript"></script>
-        <script src="/assets/js/scripts.js" type="text/javascript"></script>
+        <script src="/assets/js/<?php echo $vars['script_file']; ?>.js" type="text/javascript"></script>
     </body>
 </html>

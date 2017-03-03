@@ -1,28 +1,28 @@
 [
   {
-    "id": 1,
-    "name": "Salon",
+    "id": 3,
+    "name": "Chambre",
     "subCategories": [
-      {"id": 1, "name": "Canapé"},
-      {"id": 2, "name": "Table-basse"},
-      {"id": 3, "name": "Chaise"}
+      {"id": 2, "name": "Armoire"},
+      {"id": 1, "name": "Lit"}
     ]
   },
   {
     "id": 2,
     "name": "Cuisine",
     "subCategories": [
+      {"id": 3, "name": "Chaise"},
       {"id": 1, "name": "Four"},
-      {"id": 2, "name": "Table"},
-      {"id": 3, "name": "Chaise"}
+      {"id": 2, "name": "Table"}
     ]
   },
   {
-    "id": 3,
-    "name": "Chambre",
+    "id": 1,
+    "name": "Salon",
     "subCategories": [
-      {"id": 1, "name": "Lit"},
-      {"id": 2, "name": "Armoire"}
+      {"id": 1, "name": "Canapé"},
+      {"id": 3, "name": "Chaise"},
+      {"id": 2, "name": "Table-basse"}
     ]
   }
 ]

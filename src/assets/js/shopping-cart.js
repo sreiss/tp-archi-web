@@ -69,14 +69,15 @@
 
     $('input[id^=cart-quantity-]').each(function(index, element) {
         $(element).on('change, input', function(e) {
-            var element = $(e.target);
-            updateCart(element);
+            e.preventDefault();
+            updateCart($(this));
         });
     });
 
     $('a[id^=cart-delete-]').each(function (index, element) {
         $(element).on('click', function(e) {
-            var element = $(e.target).parent();
+            e.preventDefault();
+            var element = $(this);
             deleteItem(element);
         });
     })

@@ -11,9 +11,10 @@ class Item implements \JsonSerializable {
     private $rating;
     private $brand;
     private $special;
+    private $discount_percentage;
     private static $current_id = 0;
 
-    function __construct($name, $price, $category_id, $sub_category_id, $color, $rating, $brand, $special = null)
+    function __construct($name, $price, $category_id, $sub_category_id, $color, $rating, $brand, $special = null, $discount_percentage = 0)
     {
         self::$current_id += 1;
         $this->id = self::$current_id;
@@ -25,16 +26,22 @@ class Item implements \JsonSerializable {
         $this->rating = $rating;
         $this->brand = $brand;
         $this->special = $special;
+        $this->discount_percentage = $discount_percentage;
     }
 
     public static function deserialize(StdClass $json) {
+        $discount_percentage = (isset($json->discountPercentage)) ? $json->discountPercentage : 0;
         $special = (isset($json->special)) ? $json->special : null;
-        $item = new Item($json->name, (int) $json->price, $json->categoryId, $json->subCategoryId, $json->color, $json->rating, $json->brand, $special);
+        $item = new Item($json->name, (int) $json->price, $json->categoryId, $json->subCategoryId, $json->color, $json->rating, $json->brand, $special, $discount_percentage);
         if (self::$current_id < $item->id) {
             self::$current_id = $item->id + 1;
         }
         $item->id = $json->id;
         return $item;
+    }
+
+    public function has_discount() {
+        return $this->get_price() != $this->get_original_price();
     }
 
     /**
@@ -62,11 +69,19 @@ class Item implements \JsonSerializable {
     }
 
     /**
+     * @return int
+     */
+    public function get_original_price()
+    {
+        return $this->price;
+    }
+
+    /**
      * @return mixed
      */
     public function get_price()
     {
-        return $this->price;
+        return $this->price - (($this->discount_percentage * $this->price) / 100);
     }
 
     /**

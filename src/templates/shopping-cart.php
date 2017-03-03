@@ -50,7 +50,9 @@
                     <label for="estimate-zip-code">Zip / Postal Code</label>
                     <input type="text" id="estimate-zip-code" name="estimate_zip_code" class="form-control"/>
                 </div>
-                <img src="/assets/images/cart-05.png" alt="Get a quote">
+                <div class="text-center-md">
+                    <a href="#" class="cart-button"><img src="/assets/images/cart-05.png" alt="Get a quote"></a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -61,7 +63,9 @@
                     <label for="discount-coupon">Get a coupon discount here</label>
                     <input type="text" id="discount-coupon" name="discount_coupon" class="form-control"/>
                 </div>
-                <img src="/assets/images/cart-04.png" alt="Apply coupon" />
+                <div class="text-center-md">
+                    <a href="#" class="cart-button"><img src="/assets/images/cart-04.png" alt="Apply coupon" /></a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -86,7 +90,9 @@
                         </td>
                     </tr>
                 </table>
-                <img src="/assets/images/cart-03.png" alt="Proceed">
+                <div class="text-center-md">
+                    <a href="#" class="cart-button"><img src="/assets/images/cart-03.png" alt="Proceed"></a>
+                </div>
             </div>
         </div>
     </div>

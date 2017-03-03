@@ -11,7 +11,7 @@
     }
 
     function hideSearchContainer() {
-        searchResults.css('height', '0');
+        searchResults.removeClass('visible');
     }
 
     function showNoResults() {
@@ -28,6 +28,7 @@
         var target = $(e.target);
         var value = target.val();
 
+        searchResults.addClass('visible');
         showSpinner();
 
         if (value != '') {
@@ -47,7 +48,7 @@
                                 )
                             });
 
-                            searchResults.css('height', '200px').empty().append(container);
+                            searchResults.empty().append(container);
                         }
                     }
                 })
@@ -61,8 +62,14 @@
         }
     });
 
-    searchInput.on('blur', function(e) {
-        hideSearchContainer();
+    $(document).on('click', function(e) {
+        var srOffset = searchResults.offset();
+
+        var srBottomOffset = srOffset.top + searchResults.height();
+
+        if (e.pageY < srOffset.top || e.pageY > srBottomOffset) {
+            hideSearchContainer();
+        }
     });
 
 })(jQuery, searchController);

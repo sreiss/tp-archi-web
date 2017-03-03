@@ -5,6 +5,7 @@ define('BASEPATH', dirname($_SERVER['SCRIPT_FILENAME']));
 define('HOST', 'http://' . $_SERVER['HTTP_HOST']);
 
 include_once BASEPATH . '/models/shopping-item.model.php';
+require_once BASEPATH . '/utils/page-config.class.php';
 
 if (!session_id()) {
     session_start();
@@ -36,15 +37,20 @@ $is_valid_route = true;
 if (isset($_SERVER['PATH_INFO'])) {
     $path = $_SERVER['PATH_INFO'];
 
-    $route_name = '';
     foreach ($routes as $r_name => $route) {
-        if (substr($path, 1, strlen($r_name)) === $r_name) {
+        if ($r_name === '') {
+            $stripped_path = substr($path, 1);
+        } else {
+            $stripped_path = substr($path, 1, strlen($r_name));
+        }
+
+        if ($stripped_path === $r_name) {
             $route_name = $r_name;
             break;
         }
     }
 
-    if (isset($routes[$route_name]) && $methods = $routes[$route_name]->get_methods()) {
+    if (isset($route_name) && isset($routes[$route_name]) && $methods = $routes[$route_name]->get_methods()) {
         foreach ($methods as $m_name => $m_verb_path) {
             $verb_path = explode(' ', $m_verb_path);
 
@@ -88,13 +94,15 @@ if (isset($_SERVER['PATH_INFO'])) {
         array_unshift($params, $query);
     }
 } else {
+    // Default page: design
     $route_name = 'design';
     $method_name = 'index';
 }
 
 $error_code = 404;
 $error_message = null;
-if (isset($routes[$route_name]) && isset($routes[$route_name]->get_methods()[$method_name])) {
+if (isset($route_name) && isset($method_name) && isset($routes[$route_name]) && isset($routes[$route_name]->get_methods()[$method_name])) {
+    PageConfig::get_instance()->set_script_file($route_name);
     $route = $routes[$route_name];
     require_once 'controllers/' . $route->get_file() . '.controller.php';
 

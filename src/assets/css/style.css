@@ -1,5 +1,24 @@
 /*
+============================
+UTILS
+============================
+ */
 
+.text-center-md {
+    text-align: center;
+}
+
+@media(min-width: 992px) {
+    .text-center-md {
+        text-align: inherit;
+    }
+}
+
+
+/*
+============================
+ALERT
+============================
  */
 
 .alert {
@@ -19,16 +38,24 @@ SEARCH
 */
 
 .search-results-container {
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
+    -webkit-transition: height 0.2s, padding 0.2s;
+    -moz-transition: height 0.2s, padding 0.2s;
+    -ms-transition: height 0.2s, padding 0.2s;
+    -o-transition: height 0.2s, padding 0.2s;
+    transition: height 0.2s, padding 0.2s;
 }
 
 .search-results-container {
     height: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.search-results-container.visible {
+    border-top: 1px solid rgb(236,236,236);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: auto;
 }
 
 .search-results-container img {
@@ -44,6 +71,12 @@ SEARCH
     margin: 40px auto;
 }
 
+@media(min-width: 992px) {
+    .search-results-container.visible {
+        height: 220px;
+    }
+}
+
 /*
 ============================
 NAVBAR
@@ -54,8 +87,11 @@ NAVBAR
     margin-bottom: 15px;
 }
 
-.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
-    margin-left: 15px;
+.container-fluid>.navbar-collapse,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container>.navbar-header {
+    margin-left: 0;
     margin-right: 0;
 }
 
@@ -85,6 +121,7 @@ NAVBAR
 }
 
 .navbar-soft-market .navbar-brand {
+    margin-left: 15px;
     padding: 4px 0;
 }
 
@@ -93,6 +130,13 @@ NAVBAR
 }
 
 @media (min-width: 768px) {
+    .container-fluid>.navbar-collapse,
+    .container-fluid>.navbar-header,
+    .container>.navbar-collapse,
+    .container>.navbar-header {
+        margin-left: 15px;
+    }
+
     .items-nav .navbar-loader {
         float: left;
         margin-right: 15px;
@@ -109,7 +153,7 @@ NAVBAR
     }
 
     .navbar-form.navbar-right {
-        padding: 10px 0 10px 15px;
+        padding: 0 0 0 15px;
     }
 }
 
@@ -132,6 +176,10 @@ NAVBAR
 .sub-navbar-soft-market .nav > li > a {
     display: inline;
     background-color: transparent;
+}
+
+.sub-navbar-soft-market .navbar-nav > li {
+    text-align: center;
 }
 
 @media(min-width: 768px) {
@@ -188,6 +236,7 @@ HEADER
 .main-header .search-input {
     background: url(../images/img-02.png) 95% center no-repeat;
     padding-right: 24px;
+    height: 34px;
 }
 
 /*
@@ -196,12 +245,9 @@ FOOTER
 ============================
 */
 
+ul.langs,
 ul.currencies {
-    margin-left: 30px;
-    padding: 0;
-}
-
-ul.langs {
+    float: none;
     padding: 0;
 }
 
@@ -234,6 +280,7 @@ ul.currencies > li.active a {
     color: rgb(80,80,80);
     font-size: 14px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .container.no-padding {
@@ -276,6 +323,19 @@ img {
 }
 
 @media(min-width: 992px) {
+    ul.langs,
+    ul.currencies {
+        float: right;
+    }
+
+    ul.currencies {
+        margin-left: 30px;
+    }
+
+    .currency-footer {
+        text-align: left;
+    }
+
     .social-list > li,
     .payment-list > li {
         display: inline-block;
@@ -499,6 +559,11 @@ DESIGN
 ============================
 */
 
+.design-main .pagination {
+    margin-top: 100px;
+    margin-bottom: 70px;
+}
+
 @media(min-width: 768px) {
     .design-main > .filter-panel {
         padding-left: 30px;
@@ -507,6 +572,25 @@ DESIGN
     .design-main > .products-main {
         padding-right: 0;
     }
+}
+
+.price {
+    font-size: 12px;
+}
+
+.price.with-discount {
+    color: rgb(198,198,198);
+    text-decoration: line-through;
+}
+
+.discount-price {
+    color: rgb(206,67,68);
+    font-size: 18px;
+}
+
+.product h5,
+.product p {
+    margin-bottom: 3px;
 }
 
 .product > .image-container {
@@ -660,9 +744,11 @@ DESIGN
     font-size: 12px;
     margin-top: 18px;
     margin-bottom: 18px;
+    text-align: center;
 }
 
 .items-nav .navbar-nav > li > a {
+    text-align: center;
     background-color: white;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -765,4 +851,10 @@ PAGINATION
     padding: 4px 8px;
     font-size: 11px;
     color: rgb(124,124,124);
+}
+
+.pagination > li.active > a,
+.pagination > li.active > span {
+    background-color: rgb(59,155,222);
+    border-color: rgb(59,155,222);
 }
