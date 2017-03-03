@@ -56,7 +56,7 @@
         <div class="col-md-12">
             <?php if (isset($vars['breadcrumbs']) && is_array($vars["breadcrumbs"])): ?>
                 <ol class="breadcrumb">
-                    <?php foreach ($vars['breadcrumbs'] as $breadcrumb): ?>
+                    <?php foreach ($vars['breadcrumbs'] as $i => $breadcrumb): ?>
                         <?php if ($breadcrumb->is_active): ?>
                             <li class="active"><?php echo $breadcrumb->title; ?></li>
                         <?php else: ?>

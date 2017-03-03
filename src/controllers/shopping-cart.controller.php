@@ -43,6 +43,7 @@ class ShoppingCartController extends BaseController
         } else {
             throw new Error('Invalid id');
         }
+        exit;
     }
 
     /**
@@ -63,6 +64,7 @@ class ShoppingCartController extends BaseController
         $this->update_quantity($cart, $id, $updates);
 
         ShoppingCart::get_instance()->save_cart($cart);
+        exit;
     }
 
     /**
@@ -98,6 +100,7 @@ class ShoppingCartController extends BaseController
         } else {
             throw new Error('Invalid id');
         }
+        exit;
     }
 
     // Helpers

@@ -33,7 +33,6 @@ $routes = [
 ];
 
 $params = [];
-$is_valid_route = true;
 if (isset($_SERVER['PATH_INFO'])) {
     $path = $_SERVER['PATH_INFO'];
 
@@ -94,8 +93,8 @@ if (isset($_SERVER['PATH_INFO'])) {
         array_unshift($params, $query);
     }
 } else {
-    // Default page: design
-    $route_name = 'design';
+    // Default page: home
+    $route_name = '';
     $method_name = 'index';
 }
 

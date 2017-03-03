@@ -135,7 +135,7 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <?php if ($i > 0 && (($i % 2) == 0)): ?>
+                    <?php if ((($i + 1) % 3) == 0): ?>
                         <div class="clearfix"></div>
                     <?php endif; ?>
                 <?php endforeach; ?>

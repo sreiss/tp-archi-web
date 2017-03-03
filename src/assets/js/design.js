@@ -63,6 +63,14 @@
     }
     addCartButtonActions();
 
+    function showNoProducts() {
+        var products = $('#products');
+
+        products.empty();
+
+        products.append($('<p class="text-center">').append('No products found'));
+    }
+
     function displayProducts(data) {
         var products = $('#products');
 
@@ -119,7 +127,7 @@
 
             products.append(itemDiv);
 
-            if (i > 0 && ((i % 2) == 0)) {
+            if (((i + 1) % 3) == 0) {
                 products.append($('<div class="clearfix">'));
             }
         }
@@ -145,7 +153,11 @@
                 numberOfItems.empty();
                 numberOfItems.append(data.length);
 
-                displayProducts(data);
+                if (data.length > 0) {
+                    displayProducts(data);
+                } else {
+                    showNoProducts();
+                }
             })
             .fail(function() {
 

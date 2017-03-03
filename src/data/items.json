@@ -51,5 +51,45 @@
     "color": "green",
     "rating": 2.5,
     "brand": "MobHill"
+  },
+  {
+    "id": 6,
+    "name": "Lit Ragnarok",
+    "price": 891,
+    "categoryId": 3,
+    "subCategoryId": 1,
+    "color": "black",
+    "rating": 3.5,
+    "brand": "MobHill"
+  },
+  {
+    "id": 7,
+    "name": "Table Heim",
+    "price": 249,
+    "categoryId": 2,
+    "subCategoryId": 2,
+    "color": "pink",
+    "rating": 2,
+    "brand": "GroundStat"
+  },
+  {
+    "id": 8,
+    "name": "Table-basse Houra",
+    "price": 679,
+    "categoryId": 1,
+    "subCategoryId": 2,
+    "color": "blue",
+    "rating": 4.8,
+    "brand": "GroundStat"
+  },
+  {
+    "id": 9,
+    "name": "Chaise Vane",
+    "price": 903,
+    "categoryId": 1,
+    "subCategoryId": 3,
+    "color": "dark-purple",
+    "rating": 4,
+    "brand": "GroundStat"
   }
 ]

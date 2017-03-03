@@ -62,7 +62,7 @@ class DesignController extends BaseController {
                 $sub_category_id = $filter['sub-category'];
             }
             if (isset($filter['search-text'])) {
-                $search_text = $filter['search-text'];
+                $search_text = urldecode($filter['search-text']);
             }
             if (isset($filter['color'])) {
                 $color = $filter['color'];
