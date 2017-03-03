@@ -13,9 +13,6 @@ if (!session_id()) {
 
 include 'models/route.model.php';
 
-/**
- * In routes, the required parameters are method and path.
- */
 $routes = [
     'shopping-cart'    => new \Route('shopping-cart', 'ShoppingCart', [
         'index' => 'GET /',
@@ -36,6 +33,7 @@ $params = [];
 if (isset($_SERVER['PATH_INFO'])) {
     $path = $_SERVER['PATH_INFO'];
 
+    // We check if the current path corresponds to a route
     foreach ($routes as $r_name => $route) {
         if ($r_name === '') {
             $stripped_path = substr($path, 1);
@@ -49,6 +47,7 @@ if (isset($_SERVER['PATH_INFO'])) {
         }
     }
 
+    // If a route was found, we determine the method name, from the http method.
     if (isset($route_name) && isset($routes[$route_name]) && $methods = $routes[$route_name]->get_methods()) {
         foreach ($methods as $m_name => $m_verb_path) {
             $verb_path = explode(' ', $m_verb_path);
@@ -77,6 +76,7 @@ if (isset($_SERVER['PATH_INFO'])) {
         }
     }
 
+    // If the method is a get, we build an associative array with the query
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $query = [];
 
@@ -118,6 +118,7 @@ if (isset($route_name) && isset($method_name) && isset($routes[$route_name]) && 
     $error_message = 'Not found';
 }
 
+// If no route or method was found, we throw an error
 if (!is_null($error_message)) {
     require_once 'controllers/error.controller.php';
 

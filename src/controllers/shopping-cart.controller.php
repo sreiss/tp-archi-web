@@ -25,6 +25,12 @@ class ShoppingCartController extends BaseController
             'grand_total' => $total,
             'subtotal' => $total
         ]);
+
+        $cart = ShoppingCart::get_instance()->get_cart();
+        foreach ($cart as $shopping_item) {
+            $shopping_item->set_was_added(false);
+        }
+        ShoppingCart::get_instance()->save_cart($cart);
     }
 
     /**
@@ -84,7 +90,7 @@ class ShoppingCartController extends BaseController
             }
 
             if (!ShoppingCart::get_instance()->exists_in_cart($id)) {
-                $shopping_item = new ShoppingItem(1, $id);
+                $shopping_item = new ShoppingItem(1, $id, null, true);
                 ShoppingCart::get_instance()->add_to_cart($shopping_item);
             } else {
                 $cart = ShoppingCart::get_instance()->get_cart();

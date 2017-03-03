@@ -1,5 +1,15 @@
 <div class="container">
     <?php if (isset($vars['shopping_cart']) && count($vars['shopping_cart']) > 0): ?>
+    <?php foreach ($vars['shopping_cart'] as $item): ?>
+        <?php if ($item->was_added()): ?>
+            <div class="alert alert-success" id="added-to-cart-alert">
+                <i class="glyphicon glyphicon-ok"></i>
+                <strong> <?php echo $item->get_item()->get_name(); ?> successfully added to your cart.</strong>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+    <div id="cart-main">
         <table class="table table-cart" id="cart-table">
             <thead>
             <tr>
@@ -28,70 +38,71 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-    <?php else: ?>
-        <div class="well">
-            You have no items in your cart
-        </div>
-    <?php endif; ?>
-    <div class="row">
-        <div class="col-md-4">
-            <h4 class="col-title">Estimate Shipping & taxes</h4>
-            <div class="col-content">
-                <p>Enter your destination to get a shipping estimation.</p>
-                <div class="form-group">
-                    <label for="estimate-country">Country</label>
-                    <input type="text" id="estimate-country" name="estimate_country" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label for="estimate-state">State / Province</label>
-                    <input type="text" id="estimate-state" name="estimate_state" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label for="estimate-zip-code">Zip / Postal Code</label>
-                    <input type="text" id="estimate-zip-code" name="estimate_zip_code" class="form-control"/>
-                </div>
-                <div class="text-center-md">
-                    <a href="#" class="cart-button"><img src="/assets/images/cart-05.png" alt="Get a quote"></a>
+        <?php else: ?>
+            <div class="well">
+                You have no items in your cart
+            </div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="col-title">Estimate Shipping & taxes</h4>
+                <div class="col-content">
+                    <p>Enter your destination to get a shipping estimation.</p>
+                    <div class="form-group">
+                        <label for="estimate-country">Country</label>
+                        <input type="text" id="estimate-country" name="estimate_country" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="estimate-state">State / Province</label>
+                        <input type="text" id="estimate-state" name="estimate_state" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="estimate-zip-code">Zip / Postal Code</label>
+                        <input type="text" id="estimate-zip-code" name="estimate_zip_code" class="form-control"/>
+                    </div>
+                    <div class="text-center-md">
+                        <a href="#" class="cart-button"><img src="/assets/images/cart-05.png" alt="Get a quote"></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <h4 class="col-title">Discount Coupon</h4>
-            <div class="col-content">
-                <p>Enter a coupon code below if you have one.</p>
-                <div class="form-group">
-                    <label for="discount-coupon">Get a coupon discount here</label>
-                    <input type="text" id="discount-coupon" name="discount_coupon" class="form-control"/>
-                </div>
-                <div class="text-center-md">
-                    <a href="#" class="cart-button"><img src="/assets/images/cart-04.png" alt="Apply coupon" /></a>
+            <div class="col-md-4">
+                <h4 class="col-title">Discount Coupon</h4>
+                <div class="col-content">
+                    <p>Enter a coupon code below if you have one.</p>
+                    <div class="form-group">
+                        <label for="discount-coupon">Get a coupon discount here</label>
+                        <input type="text" id="discount-coupon" name="discount_coupon" class="form-control"/>
+                    </div>
+                    <div class="text-center-md">
+                        <a href="#" class="cart-button"><img src="/assets/images/cart-04.png" alt="Apply coupon" /></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <h4 class="col-title">Order Total</h4>
-            <div class="col-content">
-                <table class="cart-total-table">
-                    <tr>
-                        <td>
-                            Subtotal
-                        </td>
-                        <td id="cart-subtotal">
-                            $<?php echo $vars['subtotal']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Grand total
-                        </td>
-                        <td id="cart-grand-total" class="grand-total">
-                            <span class="grand-total-value">$<?php echo $vars['grand_total']; ?></span>
-                            <span class="loader"></span>
-                        </td>
-                    </tr>
-                </table>
-                <div class="text-center-md">
-                    <a href="#" class="cart-button"><img src="/assets/images/cart-03.png" alt="Proceed"></a>
+            <div class="col-md-4">
+                <h4 class="col-title">Order Total</h4>
+                <div class="col-content">
+                    <table class="cart-total-table">
+                        <tr>
+                            <td>
+                                Subtotal
+                            </td>
+                            <td id="cart-subtotal">
+                                $<?php echo $vars['subtotal']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand total
+                            </td>
+                            <td id="cart-grand-total" class="grand-total">
+                                <span class="grand-total-value">$<?php echo $vars['grand_total']; ?></span>
+                                <span class="loader"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="text-center-md">
+                        <a href="#" class="cart-button"><img src="/assets/images/cart-03.png" alt="Proceed"></a>
+                    </div>
                 </div>
             </div>
         </div>

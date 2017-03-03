@@ -87,6 +87,10 @@ NAVBAR
     margin-bottom: 15px;
 }
 
+.items-nav .navbar-loader .loader {
+    margin: auto;
+}
+
 .container-fluid>.navbar-collapse,
 .container-fluid>.navbar-header,
 .container>.navbar-collapse,

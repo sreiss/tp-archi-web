@@ -7,12 +7,14 @@ class ShoppingItem
     private $quantity;
     private $item_id;
     private $item;
+    private $was_added;
 
-    function __construct($quantity = 0, $item_id, $item = null)
+    function __construct($quantity = 0, $item_id, $item = null, $was_added = false)
     {
         $this->quantity = $quantity;
         $this->item_id = $item_id;
         $this->item = $item;
+        $this->was_added = $was_added;
     }
 
     public function compute_subtotal() {
@@ -63,4 +65,22 @@ class ShoppingItem
     {
         $this->item = $item;
     }
+
+    /**
+     * @return mixed
+     */
+    public function was_added()
+    {
+        return $this->was_added;
+    }
+
+    /**
+     * @param mixed $was_added
+     */
+    public function set_was_added($was_added)
+    {
+        $this->was_added = $was_added;
+    }
+
+
 }

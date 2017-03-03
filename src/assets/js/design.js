@@ -47,6 +47,7 @@
                     .done(function(data, textStatus) {
                         $('#cart-items-count').html('(' + data.shoppingItemsCount + ')');
 
+                        /*
                         $('#added-to-cart-alert').remove();
 
                         $('#main-container').prepend(
@@ -54,6 +55,7 @@
                                 .append('<i class="glyphicon glyphicon-ok"> ')
                                 .append('<strong> ' + data.addedItem.name + ' successfully added to your cart.</strong>')
                         )
+                        */
                     })
                     .fail(function(jqXHR, textStatus, errorThrown) {
 

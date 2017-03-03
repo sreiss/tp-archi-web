@@ -1,9 +1,8 @@
 (function($, cartController) {
 
     function showNoItemsLabel() {
-        var cartTable = $('#cart-table');
-        cartTable.parent().prepend($('<div>').text('You have no items in your cart').addClass('well'));
-        cartTable.remove();
+        $('#cart-main').prepend($('<div>').text('You have no items in your cart').addClass('well'));
+        $('#cart-table').remove();
     }
 
     function updateGrandTotalAndSubtotal() {
@@ -55,9 +54,15 @@
         cartController.removeFromCart(itemId)
             .done(function(data) {
                 element.parent().parent().remove();
+
+                var cartItemsCount = $('#cart-items-count');
+
+                cartItemsCount.empty();
                 updateGrandTotalAndSubtotal();
                 var result = JSON.parse(data);
-                $('#cart-items-count').html('(' + result.shoppingItemsCount + ')');
+                if (result.shoppingItemsCount > 0) {
+                    cartItemsCount.append('(' + result.shoppingItemsCount + ')');
+                }
             })
             .fail(function (request, error, status) {
 

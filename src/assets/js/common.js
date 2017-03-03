@@ -63,13 +63,15 @@
     });
 
     $(document).on('click', function(e) {
-        var srOffset = searchResults.offset();
+        hideSearchContainer();
+    });
 
-        var srBottomOffset = srOffset.top + searchResults.height();
+    searchResults.on('click', function(e) {
+        e.stopPropagation();
+    });
 
-        if (e.pageY < srOffset.top || e.pageY > srBottomOffset) {
-            hideSearchContainer();
-        }
+    searchInput.on('click', function(e) {
+        e.stopPropagation();
     });
 
 })(jQuery, searchController);
