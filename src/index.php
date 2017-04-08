@@ -30,7 +30,7 @@ $routes = [
 ];
 
 $params = [];
-if (isset($_SERVER['PATH_INFO'])) {
+if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] != '/') {
     $path = $_SERVER['PATH_INFO'];
 
     // We check if the current path corresponds to a route
